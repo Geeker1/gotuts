@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	// "log"
 )
 
 func main() {
@@ -17,6 +18,8 @@ func main() {
 		Name:   "Reds",
 		Colors: []string{"Crimson", "Red", "Ruby", "Maroon"},
 	}
+
+	// log.Fatal("massive error")
 	b, err := json.Marshal(group)
 	if err != nil {
 		fmt.Println("error:", err)
