@@ -4,11 +4,15 @@ import (
 	"fmt"
 	"github.com/gorilla/websocket"
 	"net/http"
-	// "encoding/json"
+	"encoding/json"
 	// "os"
 )
 
 // type logger struct
+
+type ping struct{
+	Ping int `json:"ping"`
+}
 
 func main() {
 
@@ -22,8 +26,13 @@ func main() {
 		header,
 	)
 
+	msg := ping{
+		Ping:1,
+	}
+
 	for{
-		err := ws.WriteMessage(1,[]byte(`{"ping":1}`))
+		realo, _ := json.Marshal(msg)
+		err := ws.WriteMessage(1,realo)
 		if err != nil{
 			fmt.Println("The error is massive")
 			break
